@@ -1,4 +1,5 @@
 <template>
+<!--    轮播图-->
     <div class="index-e">
         <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
         <van-swipe-item class="swiper-img">

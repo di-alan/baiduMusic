@@ -1,4 +1,5 @@
 <template>
+<!--    tab切换的子组件-->
     <div>
         <ul class="index-f">
             <li v-for="item in list" :key="item.song_id">
@@ -37,7 +38,6 @@
         },
         created() {
             getBillList(this.type,6).then(res=>{
-                console.log(res)
                 this.list=res.song_list
             })
         }

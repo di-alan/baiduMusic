@@ -1,6 +1,7 @@
 <template>
     <div>
-        <SingerItem v-for="item in billTypeList" :key="item" :type="item"></SingerItem>
+        <SingerItem v-for="item in billTypeList" :key="item" :type="item "></SingerItem>
+
     </div>
 </template>
 
@@ -13,11 +14,11 @@
         components:{
             SingerItem
         },
-        // data(){
-        //     return {
-        //         billTypeList:[1,2,11,22,23,24]
-        //     }
-        // }
+        data(){
+            return {
+                billTypeList:[2517 ,7994,1091,45561,2507,245815,1077,1204,1117,82366]
+            }
+        }
     }
 </script>
 

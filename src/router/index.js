@@ -34,7 +34,7 @@ Vue.use(VueRouter)
       },
       {
         path:"search",
-        component: () => import( '../views/Search.vue'),
+        component: () => import( '../views/Search/Search.vue'),
         meta:{
           title:"搜索"
         }
@@ -47,13 +47,29 @@ Vue.use(VueRouter)
         }
       },
       {
-        path:"more/:type",
-        // name:"MusicMore",
+        path:"search",
+        component: () => import( '../views/Search/Search.vue'),
+        meta:{
+          title:"搜索"
+        }
+      },
+      {
+        path:"more/:type/:title",
+        name:"MusicMore",
         component: () => import( '../views/MusicMore.vue'),
         meta:{
           title:"更多音乐"
         }
       },
+      {
+        path:"play",
+        // name:"MusicMore",
+        component: () => import( '../views/Play/play.vue'),
+        meta:{
+          title:"歌词"
+        }
+      },
+
 
 
     ]

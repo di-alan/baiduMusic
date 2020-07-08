@@ -1,15 +1,16 @@
 <template>
+    <!--    榜单列表-->
     <div class="index-b">
         <h3>{{title}}
-          <router-link :to="'/index/more/'+type"><span>更多</span></router-link>
+            <router-link :to="'/index/more/'+type+'/'+title"><span>更多</span></router-link>
         </h3>
         <div>
-            <ul class="index-c">
-                <li v-for="item in songList" :key="item.song_id">
-                    <img :src="item.pic_big" alt="">
-                    <div>{{item.title}}</div>
-                </li>
-            </ul>
+            <router-link to="/index/play"> <ul class="index-c">
+             <li v-for="item in songList" :key="item.song_id">
+                   <img :src="item.pic_big" alt="">
+                   <div>{{item.title}}</div>
+               </li>
+            </ul></router-link>
         </div>
     </div>
 </template>
@@ -19,24 +20,24 @@
 
     export default {
         name: "BillList",
-        props:{
-            title:{
-                type:String,
-                default:"榜单"
+        props: {
+            title: {
+                type: String,
+                default: "榜单"
             },
-            type:{
-                type:Number,
+            type: {
+                type: Number,
 
 
             },
-            size :{
-                type:Number,
+            size: {
+                type: Number,
                 default: 6
             }
         },
-        data(){
-            return{
-                songList:[]
+        data() {
+            return {
+                songList: []
             }
         },
         created() {
@@ -44,39 +45,43 @@
             //     .then(res=>{
             //         this.songList=res.song_list;
             //     })
-            getBillList(this.type,this.size).then(res=>{
-                        this.songList=res.song_list;
-                    })
+            getBillList(this.type, this.size).then(res => {
+                this.songList = res.song_list;
+            })
         }
     }
 
 </script>
 
 <style scoped lang="less">
-.index-b {
-    padding: 5px 15px;
-    background-color: whitesmoke;
-    h3 {
-        margin: 10px 0;
+    .index-b {
+        padding: 5px 15px;
+        background-color: whitesmoke;
 
-        span {
-            float: right;
-            font-size: 14px;
-            color: #999999;
+        h3 {
+            margin: 10px 0;
+
+            span {
+                float: right;
+                font-size: 14px;
+                color: #999999;
+            }
         }
-    }
-    .index-c {
-        display: flex;
-        flex-wrap: wrap;
-        li {
-            width:calc(100% / 3) ;
-            box-sizing: border-box;
-            padding: 5px;
-            img {
-                width: 100%;
+
+        .index-c {
+            display: flex;
+            flex-wrap: wrap;
+
+            li {
+                width: calc(100% / 3);
+                box-sizing: border-box;
+                padding: 5px;
+
+                img {
+                    width: 100%;
+                }
             }
         }
     }
-}
 
 </style>

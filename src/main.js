@@ -35,6 +35,10 @@ import { Cell, CellGroup } from 'vant';
 
 Vue.use(Cell);
 Vue.use(CellGroup);
+//矢量图
+import { Icon } from 'vant';
+
+Vue.use(Icon);
 
 new Vue({
   router,

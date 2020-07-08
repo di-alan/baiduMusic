@@ -1,4 +1,5 @@
 <template>
+<!--    tab切换-->
     <div class="index-b">
         <h3>热门榜单<router-link  :to="'/index/more/'+type"> <span>更多</span></router-link></h3>
         <van-tabs v-model="active">
