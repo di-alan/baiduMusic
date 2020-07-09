@@ -10,7 +10,7 @@ Vue.use(VueRouter)
       path:"/",
       redirect:"/index"
     },
-  {
+    {
     path: '/index',
     component: IndexLayout,
     children:[
@@ -25,6 +25,14 @@ Vue.use(VueRouter)
           title:"榜单"
         }
       },
+      {
+        path:"/bill/BillDetail/:type",
+        component: () => import( '../views/Bill/component/BillDetail'),
+        meta:{
+          title:"榜单详情"
+        }
+      },
+
       {
         path:"my",
         component: () => import( '../views/My.vue'),
@@ -54,6 +62,15 @@ Vue.use(VueRouter)
         }
       },
       {
+        path:"/singer/SingerDetail/:tinguid",
+        name: "SingerDetail",
+        component: () => import( '../views/Singer/component/SingerDetail'),
+        meta:{
+          title:"歌手详情"
+        }
+      },
+
+      {
         path:"more/:type/:title",
         name:"MusicMore",
         component: () => import( '../views/MusicMore.vue'),
@@ -61,19 +78,18 @@ Vue.use(VueRouter)
           title:"更多音乐"
         }
       },
-      {
-        path:"play",
-        // name:"MusicMore",
-        component: () => import( '../views/Play/play.vue'),
-        meta:{
-          title:"歌词"
-        }
-      },
-
-
-
     ]
   },
+    {
+      path:"/play/:songId",
+      // name:"MusicMore",
+      component: () => import( '../views/Play/play.vue'),
+      meta:{
+        title:"歌曲播放"
+      }
+    },
+
+
   // {
   //   path: '/about',
   //   name: 'About',

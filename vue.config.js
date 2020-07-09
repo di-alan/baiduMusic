@@ -12,6 +12,23 @@ module.exports={
                 target: "http://tingapi.ting.baidu.com",
                 changeOrigin: true
             },
+            "/taihe-api":{
+                target: "http://music.taihe.com",
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/taihe-api': ''
+                }
+            },
+            "/data/song/lrc": {
+                target: "http://music.taihe.com",
+                changeOrigin: true,
+            },
+            "/v1/restserver": {
+                target: "http://musicapi.taihe.com",
+                changeOrigin: true,
+            },
+
+
         },
     },
 

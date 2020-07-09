@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {getBillList} from "../api/music-api";
+import {getBillList, getSinger} from "../api/music-api";
 import user from "./modules/user";
    //专为vue.js开发的状态管理模式，  采用集中式存储管理所有组件的状态，
    // 相应的规则保证状态以一种可预测的方式发生变化。
@@ -19,6 +19,11 @@ export default new Vuex.Store({
       play:"爱你"
     } ,
     list:[1,2,9,6,5,9,3] ,
+      // 播放进度
+      currentTime: 0,
+      // 要设置的时间
+      process: null,
+      billTypeList:[]
 
   },
   //修改vuex中的数据
@@ -41,6 +46,15 @@ export default new Vuex.Store({
 
      setBillList(state,payload) {
           state.billList= payload.billList
+      },
+      setCurrentTime(state,payload) {
+          state.currentTime= payload.currentTime
+      },
+      setProcess(state,payload) {
+          state.process= payload.process
+      },
+      setBillTypeList(state,payload){
+          state.billTypeList= payload.billTypeList
       }
   },
 
@@ -74,6 +88,13 @@ export default new Vuex.Store({
               commit("setBillList",{billList:res.list})   ;
               
             })
+      },
+      setBillTypeList ({commit},{tinguid}){
+          getSinger(tinguid).then(res=>{
+              //触发mutations 修改数据
+              commit("setBillTypeList",{list:res.tinguid})   ;
+
+          })
       }
   },
   modules: {

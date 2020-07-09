@@ -5,12 +5,12 @@
             <router-link :to="'/index/more/'+type+'/'+title"><span>更多</span></router-link>
         </h3>
         <div>
-            <router-link to="/index/play"> <ul class="index-c">
-             <li v-for="item in songList" :key="item.song_id">
+            <ul class="index-c">
+             <router-link tag="li" :to="'/play/'+item.song_id"  v-for="item in songList" :key="item.song_id">
                    <img :src="item.pic_big" alt="">
                    <div>{{item.title}}</div>
-               </li>
-            </ul></router-link>
+               </router-link>
+            </ul>
         </div>
     </div>
 </template>

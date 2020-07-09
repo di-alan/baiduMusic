@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- 榜单 -->
-        <BillItem v-for="item in billTypeList" :key="item" :type="item"></BillItem>
+        <router-link :to="'/bill/BillDetail/'+item" v-for="item in billTypeList" :key="item">  <BillItem  :type="item"></BillItem></router-link>
     </div>
 </template>
 

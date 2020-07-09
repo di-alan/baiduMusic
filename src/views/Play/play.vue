@@ -1,36 +1,79 @@
 <template>
     <div>
         <Header class="a1"/>
-        <p><img src="http://qukufile2.qianqian.com/data2/pic/140d09665d1c204efe00973c3e16282c/612757841/612757841.jpg@s_2,w_240,h_240"></p>
-        <p>歌词</p>
-        <p>歌词</p>
-        <p>歌词</p>
-        <p>歌词</p>
-        <p>歌词</p>
-        <p>歌词</p>
-        <Caoz/>
-        <audio controls src="http://audio04.dmhmusic.com/71_53_T10052963112_128_4_1_0_sdk-cpm/cn/0207/M00/AB/E6/ChR47F358H2ATBCZACyoAk8TiUM352.mp3?xcode=9d74883c9588dd035dd20295708d531ba73e989"></audio>
+        <p class="a2" ><img :src="songInfo.pic_big"></p>
+        <Lrc v-if="songInfo.lrclink" :lrc-link="songInfo.lrclink"/>
+        <Caoz :file-link="bitrate.file_link"/>
+        <audio ref="audio" class="a3" controls :src="bitrate.show_link"></audio>
     </div>
 </template>
 
 <script>
 
 
-    import Header from "../Search/component/Header";
-    import Caoz from "../Search/component/Caoz";
+    import Header from "./component/Header";
+    import Caoz from "./component/Caoz";
+    import Lrc from "./component/Lrc";
+    import {getSongInfo} from "../../api/music-api";
+    import {mapState} from "vuex";
+
 
     export default {
         components:{
             Header,
-            Caoz
+            Caoz,
+            Lrc
         },
-        name: "play"
+        name: "play",
+        data() {
+            return {
+                height: 0,
+                songInfo:{},
+                bitrate: {}
+            }
+        },
+        created() {
+            this.height = window.innerHeight + "px";
+            getSongInfo(this.$route.params.songId).then(res => {
+                // console.log(res);
+                this.songInfo=res.songinfo;
+                this.bitrate = res.bitrate;
+            })
+        },
+        // mounted() {
+        //     this.$refs.audio.addEventListener("timeupdate", () => {
+        //         this.$store.commit("setCurrentTime", {currentTime: this.$refs.audio.currentTime})
+        //     })
+        // },
+        computed: {
+            ...mapState(["process"])
+        },
+        watch: {
+            process() {
+                this.$refs.audio.currentTime = this.process;
+            }
+        }
     }
 </script>
 
 <style scoped lang="less">
     .a1 {
-
+        margin-top: 30px;
+        /*display: flex;*/
+        /*justify-content: space-between;*/
+    }
+    .a2 {
+        display: flex;
+        justify-items: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 110px;
+          img {
+              border-radius: 20px;
+          }
+    }
+    .a3 {
+        margin-left: 30px;
     }
 
 </style>

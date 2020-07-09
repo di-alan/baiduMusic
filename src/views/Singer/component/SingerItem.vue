@@ -1,12 +1,9 @@
 <template>
     <div class="item-container">
-        <div class="cover">
-            <img :src="obj.avatar_big" alt="">
-        </div>
-
-        <span>{{obj.name}}</span>
-
-
+            <div class="cover">
+                <img :src="obj.avatar_big" alt="">
+            </div>
+            <span>{{obj.name}}</span>
     </div>
 </template>
 
@@ -17,26 +14,26 @@
 
     export default {
         name: "SingerItem",
-        props:{
-            type:{
+        props: {
+            type: {
                 type: Number
             },
 
         },
-        data(){
+        data() {
             return {
 
-                obj:{}
+                obj: {}
                 // song_list:{}
                 // billboard:{}
             }
         },
-        created(){
-            getSingerList(this.type).then(res=> {
+        created() {
+            getSingerList(this.type).then(res => {
                 // this.list=res.list;
                 // console.log(res)
                 // this.billboard=res.billboard;
-                this.obj=res;
+                this.obj = res;
             })
         }
     }
@@ -45,6 +42,7 @@
 <style scoped lang="less">
     .item-container {
         display: flex;
+
         .cover {
             width: 100px;
             height: 100px;
@@ -57,7 +55,7 @@
         }
 
         span {
-           line-height: 130px;
+            line-height: 130px;
             color: red;
         }
     }

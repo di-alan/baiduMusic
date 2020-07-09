@@ -27,7 +27,7 @@
             // eslint-disable-next-line
             // debugger
             // console.log(this.state.useInfo.name);
-            this.$store.dispatch("setBillList",{type:2})
+            this.$store.dispatch("setBillTypeList",{type:2})
         },
         computed:{
             // vuex  都要写在计算属性里面

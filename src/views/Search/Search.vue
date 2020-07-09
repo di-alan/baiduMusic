@@ -1,39 +1,52 @@
 <template>
-    <div class="item-container-search">
-        <input type="text" v-model="value1"  >
-        <button @click="click">搜索</button>
-        <SearchItem></SearchItem>
-    </div>
+<div>
+     <div>
+         <input type="text"  placeholder="请输入搜索内容" v-model="value1">
+         <button @click="click" >搜索</button>
+
+     </div>
+
+    <van-tabs>
+        <van-tab v-for="(item,index) in list" :title="item.artistname" :key="index" >
+            <SearchItem :query="item.artistname"></SearchItem>
+        </van-tab>
+    </van-tabs>
+
+
+</div>
 </template>
 
 <script>
 
-
-
     import SearchItem from "./component/SearchItem";
+    import {getSearch} from "../../api/music-api";
 
     export default {
         name: "Search",
         components:{
             SearchItem
         },
-        data() {
-             return {
-                 value1:"输入搜索内容"
-             }
+        data(){
+            return{
+                value1:"",
+                list:[],
+            }
         },
         methods:{
             click(){
-
+                // console.log(this.value1)
+                getSearch(this.value1).then(res=>{
+                    console.log(res)
+                    this.list = res.artist
+                });
             }
         }
+
     }
 </script>
 
+
+
 <style scoped lang="less">
- .item-container-search {
-     position: relative;
-     left: 65px;
-     top:30px
- }
+
 </style>
