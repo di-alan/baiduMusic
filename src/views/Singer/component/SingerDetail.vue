@@ -29,7 +29,8 @@
         //     ...mapState (["billTypeList"]),
         // },
         // created() {
-        //     this.$store.dispatch("setBillList",{list:tingup})
+        //     // eslint-disable-next-line no-debugger
+        //     this.$store.dispatch("setBillTypeList",{tinguid:this.$route.params.tinguid})
         // }
         created() {
                 console.log(this.$route.params.tinguid);

@@ -43,6 +43,7 @@
     .searchSingerSong-container {
         display: flex;
         flex-direction: column;
+
         .searchSingerSong{
             display: flex;
             padding: 10px 2px;

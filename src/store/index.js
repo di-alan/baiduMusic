@@ -92,7 +92,7 @@ export default new Vuex.Store({
       setBillTypeList ({commit},{tinguid}){
           getSinger(tinguid).then(res=>{
               //触发mutations 修改数据
-              commit("setBillTypeList",{list:res.tinguid})   ;
+              commit("setBillTypeList",{ billTypeList:res})   ;
 
           })
       }

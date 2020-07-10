@@ -1,6 +1,6 @@
 <template>
 <div>
-     <div>
+     <div class="searchSingerSong-container">
          <input type="text"  placeholder="请输入搜索内容" v-model="value1">
          <button @click="click" >搜索</button>
 
@@ -48,5 +48,12 @@
 
 
 <style scoped lang="less">
+.searchSingerSong-container {
+      /*height: 30px;*/
+    /*border: 1px solid black;*/
+    padding-left: 60px;
+}
+
+
 
 </style>

@@ -37,19 +37,23 @@
 </script>
 
 <style scoped lang="less">
-    .g1{
+    .details-pic{
         background-color: #E3E2E3;
-
-        height: 100px;
-        margin-top: 40px;
+        width: 100%;
+        height: 250px;
         img{
             height: 100%;
-            padding-left: 140px;
+            width: 100%;
+
         }
     }
     li {
         border-bottom: 1px solid gray;
         padding: 15px;
+           p {
+               color: gray;
+               font-size: 16px;
+           }
     }
 
 </style>
